@@ -19,7 +19,7 @@ if(!empty($_POST['token'])) {
             die();
         }
 
-        $post_handler->updatePost($_POST);
+        echo $post_handler->updatePost($_POST);
 
 
     } else {

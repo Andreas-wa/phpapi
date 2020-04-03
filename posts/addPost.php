@@ -1,9 +1,28 @@
 <?php
 include("../object/posts.php");
-$posts_object = new Posts($databaseHandler);
+include('../object/users.php');
 
-$title_IN = ( isset($_GET['title']) ? $_GET['title'] : '' );
-$content_IN = ( isset($_GET['content']) ? $_GET['content'] : '' );
+$posts_object = new Posts($databaseHandler);
+$user_handler = new User($databaseHandler);
+
+
+$token = $_POST['token'];
+
+if($user_handler->validateToken($token) === false) {
+    echo "Invalid token!";
+    die;
+}
+
+$isAdmin = $user_handler->isAdmin($token);
+
+if($isAdmin === false) {
+    echo "You are not admin";
+    die;
+}
+
+
+$title_IN = ( isset($_POST['title']) ? $_POST['title'] : '' );
+$content_IN = ( isset($_POST['content']) ? $_POST['content'] : '' );
 
 
 if(!empty($title_IN)) {

@@ -7,5 +7,4 @@
     print_r($user_handler->loginUser($_POST['username'], $_POST['password']));
     
 
-
 ?>

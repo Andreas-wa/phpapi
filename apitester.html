@@ -34,11 +34,11 @@
                 var data = $(e.target).serialize();
                 if ($(e.target).find('input[name="method"]:checked').val() === "get") {
                     $.get($(e.target).find('input[name="url"]').val(), data, (data) => {
-                        $("#serverResponse").val(data);
+                        $("#serverResponse").val(JSON.stringify(data));
                     });
                 } else {
                     $.post($(e.target).find('input[name="url"]').val(), data, (data) => {
-                        $("#serverResponse").val(data);
+                        $("#serverResponse").val(JSON.stringify(data));
                     });
                 }
             });

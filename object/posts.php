@@ -112,7 +112,7 @@ class Posts {
         $statementHandler->bindParam(":post_id", $data['id']);
         $statementHandler->execute();
 
-        echo json_encode($statementHandler->fetch());
+        return json_encode($statementHandler->fetch());
 
 
     }
